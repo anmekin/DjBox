@@ -1,0 +1,8 @@
+{% extends 'index.html' %}
+{% block userfiles %}
+    <p>I was here</p>
+    {% for file in files %}
+        {#        <a href={% url 'show_file' file.get_name %}>{{ file.get_name }}</a>#}
+        <a href="/show_file/?name={{ file.name }}">{{ file.name }}</a>
+    {% endfor %}
+{% endblock %}

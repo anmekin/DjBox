@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+    {% if user.is_authenticated %}
+        {% block navigation %}
+            <div>
+                <img src="{% static "dropAPI/img/test.png" %}">
+                <div id="dropbox-upload">
+                    <form action={% url 'upload' %} method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <br>
+                        <input type="submit" class="button" value="Upload"/>
+                    </form>
+                </div>
+            {#    <a href={% url 'upload' %}><button id="upload_button"> Load to DropBox</button></a>#}
+                <div id="dropbox-files">
+            {#        <a href={% url 'userfiles' %}><button id="show_files_button"> Show Files</button></a>#}
+                    <button id="show_files_button"> Show Files</button>
+                    <ul id="list-files"></ul>
+                </div>
+            </div>
+        {% endblock %}
+        {% block userfiles %}{% endblock %}
+    {% else %}
+       <p>If you wanna do something you should <a href="{% url 'login' %}">login</a> or <a href="{% url 'signup' %}">signup</a></p>
+    {% endif %}
+{% endblock %}
