@@ -84,6 +84,7 @@ LOGIN_URL = '/auth/login/'
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
 
 #ALLOWED_HOSTS = ['DjBox.pythonanywhere.com']
 

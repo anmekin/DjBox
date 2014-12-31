@@ -51,7 +51,7 @@ var main=function() {
         $('#list-files').empty()
     });
 
-    $('#list-files p').click(
+    $('#list-files a').click(
         function() {
             alert("You did it!")
         }
@@ -60,3 +60,5 @@ var main=function() {
 
 $(document).ready(main);
 
+// live(),delegate
+// RPC

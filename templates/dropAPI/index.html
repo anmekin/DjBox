@@ -4,7 +4,6 @@
     {% if user.is_authenticated %}
         {% block navigation %}
             <div>
-                <img src="{% static "dropAPI/img/test.png" %}">
                 <div id="dropbox-upload">
                     <form action={% url 'upload' %} method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
