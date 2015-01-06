@@ -5,7 +5,7 @@
         {% block navigation %}
             <div>
                 <div id="dropbox-upload">
-                    <form action={% url 'upload' %} method="POST" enctype="multipart/form-data">
+                    <form action={% url 'home' %} method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <br>

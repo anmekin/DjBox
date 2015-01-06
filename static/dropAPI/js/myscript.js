@@ -51,7 +51,7 @@ var main=function() {
         $('#list-files').empty()
     });
 
-    $('#list-files a').click(
+    $('#list-files').on('click', 'a',
         function() {
             alert("You did it!")
         }

@@ -23,21 +23,28 @@ def loadToDropBox(request):
     return render(request, 'index.html')
 # Create your views here.
 
-def upload(request):
+# def upload(request):
+#     form = UploadFileForm(request.POST or None, request.FILES or None)
+#     if form.is_valid():
+# #        print request.FILES
+#         obj = form.my_save(request)
+#         print obj.get_path()
+#         #handle_uploaded_file(request.FILES['file'])
+#         return redirect('/')
+#     else:
+#         return render(request, "index.html", {"form": form})
+
+
+def home(request):
     form = UploadFileForm(request.POST or None, request.FILES or None)
     if form.is_valid():
 #        print request.FILES
         obj = form.my_save(request)
-        print obj.get_path()
+        #print obj.get_path()
         #handle_uploaded_file(request.FILES['file'])
         return redirect('/')
     else:
         return render(request, "index.html", {"form": form})
-
-
-def home(request):
-    form = UploadFileForm()
-    return render(request, 'index.html', {"form": form})
 
 @login_required()
 def userfiles(request):

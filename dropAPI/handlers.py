@@ -19,8 +19,6 @@ from django.conf import settings
 
 def upload_to_dropbox(path, f):
     client = dropbox.client.DropboxClient(settings.AUTH_TOKEN)
-    print 'linked account: ', client.account_info()
-
     response = client.put_file(path, f)
-    print 'uploaded: ', response
-    return response['path']
+    # print 'uploaded: ', response
+    # return response['path']
