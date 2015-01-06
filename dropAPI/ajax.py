@@ -11,7 +11,7 @@ def userfiles_ajax(request):
         client = dropbox.client.DropboxClient(settings.AUTH_TOKEN)
         #print request.user
         #metadata = client.metadata("/" + request.user.username)
-        delta = client.delta(path_prefix="/admin")
+        delta = client.delta(path_prefix="/" + request.user.username)
         # metadata = client.metadata("/admin")
         files = []
         for file in delta['entries'][1:]:
