@@ -1,5 +1,5 @@
 __author__ = 'andrey'
-#coding:utf-8
+# -*- coding: utf-8 -*-
 from django.forms import forms, CharField, ModelForm
 
 from handlers import upload_to_dropbox
@@ -12,8 +12,6 @@ class UploadFileForm(ModelForm):
     #title = CharField(max_length=50)
     file = forms.FileField()
 
-    # правильно ли это?
-    # переопределить конструктор с полем self.request?
     def my_save(self, request):
         f = self.cleaned_data['file']
         path = '/'+request.user.username+'/'+f.name
@@ -27,8 +25,6 @@ class UploadFileForm(ModelForm):
         obj = super(UploadFileForm, self).save()
         return obj
 
-    # для каждого юзера своя папка
-    # как передать request или хотя бы username
     # def save(self, commit=False):
     #     f = self.cleaned_data['file']
     #     #obj = super(UploadFileForm, self).save(commit=False)#

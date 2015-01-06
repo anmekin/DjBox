@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+#PROJECT_DIR = os.path.dirname(__file__)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -37,7 +37,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dropAPI',
-    'loginsys',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -90,10 +89,13 @@ STATIC_ROOT = 'staticfiles'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
+    # '/var/www/static/',
 )
 
 TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates', 'dropAPI'), # for heroku
+    os.path.join(BASE_DIR, 'templates', 'loginsys'), # for heroku
+    os.path.join(BASE_DIR, 'templates', 'ajax'), # for heroku
     ('/home/andrey/PycharmProjects/DjBox/templates/dropAPI'),
     ('/home/andrey/PycharmProjects/DjBox/templates/loginsys'),
     ('/home/andrey/PycharmProjects/DjBox/templates/ajax'),

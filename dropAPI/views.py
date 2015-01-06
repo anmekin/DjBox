@@ -34,7 +34,7 @@ def upload(request):
     else:
         return render(request, "index.html", {"form": form})
 
-@login_required()
+
 def home(request):
     form = UploadFileForm()
     return render(request, 'index.html', {"form": form})
