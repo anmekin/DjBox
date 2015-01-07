@@ -1,3 +1,7 @@
 {% for file in files %}
-<li>{{ file }}<a class='share-link' href="#">Share</a></li>
+<li>
+    <span class='filename'>{{ file }}</span>
+    <a class="get-link" style="cursor: pointer; color: darkred">Get link</a>
+{#    <a class='share-link' href="#" hidden="true">Link for Share</a>#}
+</li>
 {% endfor %}

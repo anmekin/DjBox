@@ -47,15 +47,17 @@ var main=function() {
         $('#list-files').empty()
     });
 
-    $('#list-files').on('click', 'li', function() {
-        var li = $(this)
+    $('#list-files').on('click', '.get-link', function() {
+//        alert('qqq');
+        var link = $(this);
         $.ajax({
             url: '/show_file_ajax/',
             type: 'get', //this is the default though, you don't actually need to always mention it
-            data: {'name': li.text()},
+            data: {'name': $(this).siblings('.filename').text()},
             success: function (data) {
 //                alert(li.html()+'q');
-                li.append('   <a href='+data+">Link for share</a>");
+//                alert(data);
+                link.html('<a href='+data+">Link for share</a>").removeClass('.get-link');
             },
             failure: function () {
                 alert('Got an error dude');
