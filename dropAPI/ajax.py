@@ -24,11 +24,16 @@ def userfiles_ajax(request):
 
 def show_file_ajax(request):
     name = request.GET.get('name')
-    #name = name.replace('_', ' ')
-    # print name
-    # print 'Good'
     client = dropbox.client.DropboxClient(settings.AUTH_TOKEN)
     path = '/' + request.user.username + '/' + name
     shared_url = client.share(path, short_url=True)
     #print shared_url['url']
     return HttpResponse(shared_url['url'])
+
+def delete_file_ajax(request):
+    name = request.GET.get('name')
+    client = dropbox.client.DropboxClient(settings.AUTH_TOKEN)
+    path = '/' + request.user.username + '/' + name
+    client.file_delete(path)
+    print path
+    return HttpResponse("OK")

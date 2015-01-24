@@ -15,28 +15,12 @@ $.fn.oldtoggle = function () {
 };
 
 var main=function() {
-    $('#test-button').click(function () {
-        $.ajax({
-            url: '/button_test/',
-            type: 'get', //this is the default though, you don't actually need to always mention it
-            dataType: 'json',
-            success: function (data) {
-                $('#test-button').html(data['test']);
-                alert(data['test']);
-            },
-            failure: function (data) {
-                alert('Got an error dude');
-            }
-        });
-    });
-
-
     $('#show_files_button').oldtoggle(function() {
         $.ajax({
             url: '/userfiles_ajax/',
-            type: 'get', //this is the default though, you don't actually need to always mention it
+            type: 'get',
             success: function (data) {
-                $('#list-files').html(data)
+                $('#list-files').html(data).slideDown('slow');
             },
             failure: function () {
                 alert('Got an error dude');
@@ -44,30 +28,49 @@ var main=function() {
         })
     },
     function(){
-        $('#list-files').empty()
+        $('#list-files').slideUp('fast',function(){
+            $(this).empty();
+        });
     });
 
     $('#list-files').on('click', '.get-link', function() {
-//        alert('qqq');
         var link = $(this);
         $.ajax({
             url: '/show_file_ajax/',
-            type: 'get', //this is the default though, you don't actually need to always mention it
+            type: 'get',
             data: {'name': $(this).siblings('.filename').text()},
             success: function (data) {
-//                alert(li.html()+'q');
-//                alert(data);
                 link.html('<a href='+data+">Link for share</a>").removeClass('.get-link');
             },
             failure: function () {
                 alert('Got an error dude');
             }
         });
-        }
-    );
+    });
+
+    $('#list-files').on('click', '.delete-file', function() {
+        var link = $(this);
+        $.ajax({
+            url: '/delete_file_ajax/',
+            type: 'get',
+            data: {'name': $(this).siblings('.filename').text()},
+            success: function (data) {
+                link.parent().remove()
+            },
+            failure: function () {
+                alert('Got an error dude');
+            }
+        });
+    });
+
+//    $('#dropbox-upload .button').click(function(){  // for ajax upload
+//        var data = new FormData();
+//        data.append('file', $('#id_file')[0].files[0]);
+//        var request = new XMLHttpRequest();
+//        request.open("POST", "/upload_ajax/");
+//        request.send(data);
+//        alert('qqq');
+//    });
 };
 
 $(document).ready(main);
-
-// live(),delegate
-// RPC

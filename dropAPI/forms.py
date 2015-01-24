@@ -4,11 +4,12 @@ from django.forms import forms, CharField, ModelForm
 
 from handlers import upload_to_dropbox
 from models import DropObjet
+from django import forms
 
-class UploadFileForm(ModelForm):
-    class Meta:
-        model = DropObjet
-        fields=[]
+class UploadFileForm(forms.Form):
+    # class Meta:
+    #     model = DropObjet
+    #     fields=[]
     #title = CharField(max_length=50)
     file = forms.FileField()
 
@@ -24,13 +25,3 @@ class UploadFileForm(ModelForm):
         # print 'User name:' , self.instance.user
         # obj = super(UploadFileForm, self).save()
         # return obj
-
-    # def save(self, commit=False):
-    #     f = self.cleaned_data['file']
-    #     #obj = super(UploadFileForm, self).save(commit=False)#
-    #     path = upload_to_dropbox(f)
-    #     self.instance.
-    #     obj = super(UploadFileForm, self).save()
-    #     return obj
-        # fileModel = new FileModel(path)
-
