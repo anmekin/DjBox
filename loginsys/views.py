@@ -1,11 +1,7 @@
-
-
-from django.shortcuts import render_to_response, redirect, render
 from django.contrib import auth
+from django.shortcuts import render_to_response, redirect, render
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
-
-from dropAPI.models import *
 
 def login(request):
     args = {}
@@ -37,14 +33,9 @@ def signup(request):
                                         password=newuser_form.cleaned_data['password2'])
             auth.login(request, newuser)
             return redirect('/')
-        else:
-            #print 'asasa', newuser_form.errors
-
             args['form'] = newuser_form
     return render(request, 'signup.html', args)
 
 # def get_profile(user):
 #                 profile, created = UserProfile.objects.get_or_create(user=user)
 #                 return profile
-
-            # UserProfile.objects.all().select_related('user')

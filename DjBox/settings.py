@@ -85,7 +85,6 @@ LOGIN_URL = '/auth/login/'
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 
-#ALLOWED_HOSTS = ['DjBox.pythonanywhere.com']
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),

@@ -14,13 +14,14 @@ $.fn.oldtoggle = function () {
     })
 };
 
+
 var main=function() {
     $('#show_files_button').oldtoggle(function() {
         $.ajax({
             url: '/userfiles_ajax/',
             type: 'get',
             success: function (data) {
-                $('#list-files').html(data).slideDown('slow');
+                $('#list-files').html(data).show('slow');
             },
             failure: function () {
                 alert('Got an error dude');
@@ -28,7 +29,7 @@ var main=function() {
         })
     },
     function(){
-        $('#list-files').slideUp('fast',function(){
+        $('#list-files').slideUp('slow',function(){
             $(this).empty();
         });
     });
@@ -40,7 +41,7 @@ var main=function() {
             type: 'get',
             data: {'name': $(this).siblings('.filename').text()},
             success: function (data) {
-                link.html('<a href='+data+">Link for share</a>").removeClass('.get-link');
+                link.html('<a href=' + data + '>Link for share</a>').removeClass('.get-link');
             },
             failure: function () {
                 alert('Got an error dude');
@@ -62,15 +63,6 @@ var main=function() {
             }
         });
     });
-
-//    $('#dropbox-upload .button').click(function(){  // for ajax upload
-//        var data = new FormData();
-//        data.append('file', $('#id_file')[0].files[0]);
-//        var request = new XMLHttpRequest();
-//        request.open("POST", "/upload_ajax/");
-//        request.send(data);
-//        alert('qqq');
-//    });
 };
 
 $(document).ready(main);

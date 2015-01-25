@@ -1,0 +1,13 @@
+.get-link {
+    cursor: pointer;
+    color: dodgerblue;
+}
+
+.delete-file {
+    cursor: pointer;
+    color: darkred;
+}
+
+#list-files {
+    display: none;
+}
